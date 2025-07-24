@@ -1,24 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Website
+
+A modern portfolio website built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+- Responsive design
+- Dark/Light mode toggle
+- Project showcase
+- Blog section
+- Contact form
+- Chat widget with backend integration
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ 
+- Python 3.8+ (for backend)
+- npm or yarn
+
+### Installation
+
+1. Install frontend dependencies:
+```bash
+npm install
+```
+
+2. Install backend dependencies:
+```bash
+cd backend
+pip install flask flask-cors
+```
+
+### Running the Application
+
+#### Option 1: Run Both Frontend and Backend
+
+1. Start the backend server:
+```bash
+cd backend
+python hello.py
+```
+
+2. In a new terminal, start the frontend:
+```bash
+npm run dev
+```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+#### Option 2: Run Frontend Only (without backend)
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The chat widget will show a red connection indicator if the backend is not running.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Backend API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The backend server runs on `http://localhost:5001` and provides:
+
+- `GET /sendMessage` - Check server status
+- `POST /sendMessage` - Send a message and get response
+
+### Project Structure
+
+```
+portfolio/
+├── src/                    # Frontend source code
+│   ├── app/               # Next.js app directory
+│   ├── contents/          # Content data
+│   └── types/             # TypeScript types
+├── backend/               # Python Flask backend
+│   └── hello.py          # Backend server
+├── public/               # Static assets
+└── package.json          # Frontend dependencies
+```
+
+## Technologies Used
+
+- **Frontend**: Next.js 15, TypeScript, Tailwind CSS
+- **Backend**: Python Flask, Flask-CORS
+- **Icons**: React Icons
+- **Deployment**: Vercel (frontend)
+
+## Development
+
+- Frontend: `http://localhost:3000`
+- Backend: `http://localhost:5001`
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
 
 ## Learn More
 
