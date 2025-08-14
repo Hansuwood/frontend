@@ -10,7 +10,7 @@ export async function GET() {
         })
         const data = await response.json()
         return NextResponse.json(data)
-    } catch (error) {
+    } catch {
         return NextResponse.json(
             { status: 'error', message: '백엔드 서버 연결 실패' },
             { status: 500 }
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
         }
 
         return NextResponse.json(data, { headers: responseHeaders })
-    } catch (error) {
+    } catch {
         return NextResponse.json(
             { status: 'error', message: 'OpenAI 서비스 오류' },
             { status: 500 }

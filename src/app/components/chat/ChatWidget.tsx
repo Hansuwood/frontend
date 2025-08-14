@@ -26,7 +26,7 @@ const ChatWidget = () => {
                 setIsConnected(true)
                 console.log('Backend 서버에 연결되었습니다!')
             }
-        } catch (error) {
+        } catch {
             setIsConnected(false)
             console.log('Backend 서버에 연결할 수 없습니다.')
         }
@@ -72,7 +72,7 @@ const ChatWidget = () => {
                         isUser: false
                     }])
                 }
-            } catch (error) {
+            } catch {
                 // ✅ 네트워크 오류 처리 (API Route 연결 실패 시)
                 setMessages(prev => [...prev, {
                     id: Date.now() + 1,

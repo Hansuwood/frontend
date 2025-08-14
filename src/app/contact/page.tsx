@@ -2,13 +2,9 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-import { FaEnvelope, FaMapMarkedAlt, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 
-interface FormData {
-    name: string;
-    email: string;
-    message: string;
-}
+
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -43,7 +39,7 @@ const ContactPage = () => {
                 email: "",
                 message: ""
             })
-        } catch (error) {
+        } catch {
             setStatus("error");
         }
     }
@@ -63,7 +59,7 @@ const ContactPage = () => {
                 {/* contact info */}
                 <div className="space-y-8">
                     <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
-                    <p className="text-secondary md:w-2/3">I'm always open to discussing new projects, creative
+                    <p className="text-secondary md:w-2/3">I&apos;m always open to discussing new projects, creative
                         ideas, or opportunities to be part of your visions.</p>
 
                     <div className="space-y-4">

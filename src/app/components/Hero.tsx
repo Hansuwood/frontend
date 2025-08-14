@@ -11,7 +11,7 @@ const Hero = () => {
                     <Image src="/profile.avif" alt='profile image' width={100} height={100} className='rounded-full
                     mb-4 w-32 h-32 object-cover ring-2 ring-primary'/>
                 </div>
-                <h1 className='text-4xl md:text-6xl font-bold mb-6'>Hi, I'm <span className='text-primary'>Hyunho Lim</span></h1>
+                <h1 className='text-4xl md:text-6xl font-bold mb-6'>Hi, I&apos;m <span className='text-primary'>Hyunho Lim</span></h1>
                 <p className='text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8'>Cyber Security | Peneteration-Testing | CERT</p>
 
                 <div className='flex justify-center space-x-4 mb-8'>
