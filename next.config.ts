@@ -1,12 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // 정적 사이트 생성 최적화
-  output: 'standalone',
-
   // 이미지 최적화 설정
   images: {
-    unoptimized: false,
     domains: ['hansu2040.com', 'www.hansu2040.com']
   },
 
@@ -20,16 +16,6 @@ const nextConfig: NextConfig = {
         source: '/home',
         destination: '/',
         permanent: true,
-      },
-    ]
-  },
-
-  // 리라이트 설정 (SPA 라우팅 지원)
-  async rewrites() {
-    return [
-      {
-        source: '/:path*',
-        destination: '/:path*',
       },
     ]
   },
