@@ -65,10 +65,10 @@ const About = () => {
             <section className='mb-16'>
                 <h2 className='section-title'>Education</h2>
 
-                <div className='max-w-3xl mx-auto space-y-8'>
+                <div className='max-w-3xl mx-auto space-y-8'>T
                     <div className='bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md'>
                         <h3 className='text-xl font-semibold mb-2'>Bachelor of Engineering / 공학사</h3>
-                        <p className='text-primary mb-2'>Credit Bank System / 학점은행제  • 2017 - 2025</p>
+                        <p className='text-primary mb-2'>Credit Bank System / 학점은행제  • 2019 - 2025</p>
                         <p className='text-secondary'>Focused on Information Security engineering / 정보보호학 전공.</p>
                     </div>
                 </div>

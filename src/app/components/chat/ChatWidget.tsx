@@ -11,10 +11,15 @@ const ChatWidget = () => {
     const [inputMessage, setInputMessage] = useState('')
     const [isConnected, setIsConnected] = useState(false)
 
-    // Backend 연결 상태 확인
+    // ✅ Next.js API Route 사용 (가장 안전함)
+    // 백엔드 IP가 클라이언트에 노출되지 않음
+    const API_URL = '/api/chat'
+
+    // ✅ 수정된 기능: Next.js API Route를 통한 백엔드 연결 확인
+    // 직접 AWS 서버 접근 대신 프록시를 통해 안전하게 연결
     const checkBackendConnection = async () => {
         try {
-            const response = await fetch('http://localhost:5001/sendMessage', {
+            const response = await fetch(API_URL, {
                 method: 'GET'
             })
             if (response.ok) {
@@ -44,14 +49,16 @@ const ChatWidget = () => {
             setInputMessage('')
 
             try {
-                const response = await fetch('http://localhost:5001/sendMessage', {
+                // ✅ Next.js API Route로 요청 (AWS IP 숨김)
+                const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: inputMessage })
+                    body: JSON.stringify({ message: inputMessage }),
+                    credentials: 'include', // 쿠키 포함 (대화 스레드 유지용)
                 })
                 const data = await response.json()
                 if (data.status === 'success' && data.ai_response) {
-                    // OpenAI 응답 표시
+                    // ✅ OpenAI Assistant의 AI 응답을 채팅창에 표시
                     setMessages(prev => [...prev, {
                         id: Date.now() + 1,
                         text: data.ai_response,
@@ -66,9 +73,10 @@ const ChatWidget = () => {
                     }])
                 }
             } catch (error) {
+                // ✅ 네트워크 오류 처리 (API Route 연결 실패 시)
                 setMessages(prev => [...prev, {
                     id: Date.now() + 1,
-                    text: "네트워크 오류가 발생했습니다.",
+                    text: "네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
                     isUser: false
                 }])
             }
@@ -87,9 +95,11 @@ const ChatWidget = () => {
             {!isOpen && (
                 <button
                     onClick={() => setIsOpen(true)}
-                    className="bg-primary text-white p-4 rounded-full shadow-lg hover:bg-primary/90 transition-colors"
+                    className="bg-primary text-white p-4 rounded-full shadow-lg hover:bg-primary/90 transition-colors flex items-center gap-2"
                 >
                     <FaComments className="w-6 h-6" />
+                    {/* ✅ 연결 상태 표시기 */}
+                    <div className={`w-3 h-3 rounded-full ${isConnected ? 'bg-green-400' : 'bg-red-400'}`}></div>
                 </button>
             )}
 
@@ -99,8 +109,9 @@ const ChatWidget = () => {
                     {/* 헤더 */}
                     <div className="bg-primary text-white p-4 rounded-t-lg flex justify-between items-center">
                         <div className="flex items-center gap-2">
-                            <h3 className="font-semibold">채팅</h3>
-                            <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-400' : 'bg-red-400'}`}></div>
+                            <h3 className="font-semibold">AI 어시스턴트</h3>
+                            {/* ✅ 연결 상태 표시 */}
+                            <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-300' : 'bg-red-300'}`}></div>
                         </div>
                         <button
                             onClick={() => setIsOpen(false)}
