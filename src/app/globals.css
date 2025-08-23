@@ -1,48 +1,24 @@
 @import "tailwindcss";
 
-@theme {
-    --color-primary: #007AFF;
-    --color-secondary: #6B7280;
-    --color-dark: #1F2937;
-    --color-light: #F9FAFB;
-    --color-text: #000000;
-    --color-bg: #ffffff;
-
-    --font-sans: 'Inter', sans-serif;
-
-    --animation-fade-in: fadeIn 0.5s ease-in-out;
-    --animation-slide-up: slideUp 0.5s ease-in-out;
+/* 전역 스타일 */
+* {
+    box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
-@custom-variant dark (&:where(.dark, .dark *));
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
 
+/* 전역 링크 스타일 */
 a {
     transition: all 0.2s ease;
 }
 
-@layer components {
-    .container {
-        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-    }
-
-    .btn {
-        @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
-    }
-
-    .btn-primary {
-        @apply bg-primary text-white hover:bg-primary/90;
-    }
-
-    .btn-secondary {
-        @apply bg-secondary text-white hover:bg-secondary/90;
-    }
-
-    .section-title {
-        @apply text-3xl font-bold mb-8 text-center;
-    }
-}
-
+/* 키프레임 애니메이션 */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -55,7 +31,7 @@ a {
 
 @keyframes slideUp {
     from {
-        transform: translateY(20px);
+        transform: translateY(30px);
         opacity: 0;
     }
 
@@ -63,4 +39,57 @@ a {
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+@keyframes scale {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse-soft {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* 애니메이션 클래스 */
+.animate-slideUp {
+    animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.animate-scale {
+    animation: scale 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
 }

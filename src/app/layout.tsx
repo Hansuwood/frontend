@@ -17,28 +17,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hansu Portfolio - 포트폴리오",
-  description: "Full-stack developer portfolio showcasing web development projects and skills",
-  keywords: "portfolio, web developer, full-stack, React, Next.js, TypeScript",
-  authors: [{ name: "Hansu" }],
-  creator: "Hansu",
-  publisher: "Hansu",
+  title: "한수 포트폴리오 - 사이버 보안 전문가",
+  description: "사이버 보안, 모의해킹, 정보보호 전문가 한수의 포트폴리오입니다. 웹 개발 프로젝트와 보안 기술을 소개합니다.",
+  keywords: "포트폴리오, 사이버보안, 모의해킹, 정보보호, 웹개발, React, Next.js, TypeScript",
+  authors: [{ name: "한수" }],
+  creator: "한수",
+  publisher: "한수",
   metadataBase: new URL('https://www.hansu2040.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: "Hansu Portfolio - 포트폴리오",
-    description: "Full-stack developer portfolio showcasing web development projects and skills",
+    title: "한수 포트폴리오 - 사이버 보안 전문가",
+    description: "사이버 보안, 모의해킹, 정보보호 전문가 한수의 포트폴리오입니다. 웹 개발 프로젝트와 보안 기술을 소개합니다.",
     url: 'https://www.hansu2040.com',
-    siteName: 'Hansu Portfolio',
+    siteName: '한수 포트폴리오',
     type: 'website',
     locale: 'ko_KR',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Hansu Portfolio - 포트폴리오",
-    description: "Full-stack developer portfolio showcasing web development projects and skills",
+    title: "한수 포트폴리오 - 사이버 보안 전문가",
+    description: "사이버 보안, 모의해킹, 정보보호 전문가 한수의 포트폴리오입니다.",
   },
   robots: {
     index: true,
@@ -56,14 +56,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white transition-colors
-         dark:bg-gray-900 dark:text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors duration-300`}
       >
         <ThemeProvider>
           <Navbar />
-          <main className="min-h-screen pt-24">{children}</main>
+          <main className="min-h-screen pt-20">{children}</main>
           <Footer />
           <ChatWidget />
         </ThemeProvider>
