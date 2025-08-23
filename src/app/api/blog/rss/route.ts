@@ -5,6 +5,15 @@ import { promisify } from 'util';
 
 const parseXml = promisify(parseString);
 
+// RSS 결과 타입 정의
+interface RSSResult {
+    rss?: {
+        channel?: Array<{
+            item?: Array<Record<string, string[]>>;
+        }>;
+    };
+}
+
 // Velog RSS 피드 URL
 const RSS_URL = 'https://api.velog.io/rss/@grinding';
 
@@ -24,7 +33,7 @@ export async function GET() {
         const rssText = await response.text();
 
         // RSS XML 파싱
-        const result = await parseXml(rssText) as any;
+        const result = await parseXml(rssText) as RSSResult;
         const items = result.rss?.channel?.[0]?.item || [];
 
         const posts: BlogPost[] = [];
