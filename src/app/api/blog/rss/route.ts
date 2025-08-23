@@ -29,7 +29,7 @@ export async function GET() {
 
         const posts: BlogPost[] = [];
 
-        items.slice(0, 6).forEach((item: any) => {
+        items.slice(0, 6).forEach((item: Record<string, string[]>) => {
             const title = item.title?.[0] || '';
             const link = item.link?.[0] || '';
             const pubDate = item.pubDate?.[0] || '';
