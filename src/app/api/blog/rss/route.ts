@@ -24,7 +24,7 @@ export async function GET() {
         const rssText = await response.text();
 
         // RSS XML 파싱
-        const result = await parseXml(rssText);
+        const result = await parseXml(rssText) as any;
         const items = result.rss?.channel?.[0]?.item || [];
 
         const posts: BlogPost[] = [];
